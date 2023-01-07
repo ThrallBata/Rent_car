@@ -291,11 +291,13 @@
     <div class="container">
         <h2 class="sub-title">Узнать цену и забронировать</h2>
         <div class="price-text">Заполните данные, и мы перезвоним вам для уточнения всех деталей бронирования</div>
-        <form action="" class="price-form">
-            <input type="text" class="price-input" id="name" placeholder="Ваше имя">
-            <input type="text" class="price-input" id="phone" placeholder="Ваш телефон">
-            <input type="text" class="price-input" id="car" placeholder="Автомобиль, который вас интересует">
-            <button class="button" type="button" id="price-action">Узнать цену</button>
+        <form method="post" class="price-form">
+            {% csrf_token %}
+            {{ form.name }}
+            {{ form.phone_number }}
+            {{ form.car }}
+            <span>{{ error }}</span>
+            <button class="button" type="submit" id="price-action">Узнать цену</button>
         </form>
         <img src="{% static 'car/images/rolls.png'%}" alt="Rolls" class="price-image">
     </div>
