@@ -53,24 +53,26 @@
                 <div class="car-item-image">
                     <img src="{% static 'car/images/1.png'%}" alt="Image 1">
                 </div>
-                <div class="car-item-title">Lamborghini Huracan Spyder</div>
+                {% for element in cars %}
+                <div class="car-item-title">{{ element.name_car }}</div>
                 <div class="car-item-info">
                     <div class="car-item-point">
                         <img src="{% static 'car/images/transmission.png' %}" alt="Transmission">
                         <div>Коробка</div>
-                        <div>автомат</div>
+                        <div>{{ element.transmission }}</div>
                     </div>
                     <div class="car-item-point">
                         <img src="{% static 'car/images/wheel.png'%}" alt="Wheel">
                         <div>Двигатель</div>
-                        <div>5.2 л.с.</div>
+                        <div>{{ element.enginе }}</div>
                     </div>
                     <div class="car-item-point">
                         <img src="{% static 'car/images/year.png'%}" alt="Year">
                         <div>Год выпуска</div>
-                        <div>2019</div>
+                        <div>{{ element.year }}</div>
                     </div>
                 </div>
+                {% endfor%}
                 <div class="car-item-action">
                     <button class="button car-button">Забронировать</button>
                 </div>

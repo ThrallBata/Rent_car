@@ -3,7 +3,7 @@ from django.template import loader
 from django.shortcuts import render
 from django.views import generic
 
-from .models import Client
+from .models import Client, Cars
 from .forms import ClientForm
 
 
@@ -21,8 +21,16 @@ def index(request):
 
     data = {
         'form': form,
-        'error': error
+        'error': error,
     }
+    cars = Cars.objects.all()
+
+    data = {
+        'form': form,
+        'error': error,
+        'cars': cars
+    }
+
     return render(request, 'car/index.html', data)
 
 
