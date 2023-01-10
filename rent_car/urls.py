@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', include('car.urls')),
     path('admin/', admin.site.urls),
+    path('api/v1/carslist/', CarsAPIView.as_view()),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = pageNotFound

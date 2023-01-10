@@ -1,3 +1,4 @@
+from rest_framework import generics
 from django.http import HttpResponse, HttpResponseNotFound
 from django.template import loader
 from django.shortcuts import render
@@ -5,6 +6,7 @@ from django.views import generic
 
 from .models import Client, Cars
 from .forms import ClientForm
+from .serializers import CarsSerializer
 
 
 def index(request):
@@ -19,10 +21,6 @@ def index(request):
 
     form = ClientForm()
 
-    data = {
-        'form': form,
-        'error': error,
-    }
     cars = Cars.objects.all()
 
     data = {
@@ -38,3 +36,6 @@ def pageNotFound(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
 
+class CarsAPIView(generics.ListAPIView):
+    queryset = Cars.objects.all()
+    serializer_class = CarsSerializer

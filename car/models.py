@@ -18,4 +18,3 @@ class Client(models.Model):
     phone_number = models.CharField(validators=[phone_Number_Regex], max_length=12, unique=True)
     car = models.ForeignKey(Cars, on_delete=models.CASCADE)
 
-
