@@ -1,4 +1,7 @@
-from rest_framework import generics
+from rest_framework import generics, viewsets, mixins
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework.viewsets import GenericViewSet
 from django.http import HttpResponse, HttpResponseNotFound
 from django.template import loader
 from django.shortcuts import render
@@ -36,6 +39,33 @@ def pageNotFound(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
 
-class CarsAPIView(generics.ListAPIView):
-    queryset = Cars.objects.all()
+class CarsViewSet(mixins.CreateModelMixin,
+                   mixins.RetrieveModelMixin,
+                   mixins.UpdateModelMixin,
+                   mixins.DestroyModelMixin,
+                   mixins.ListModelMixin,
+                   GenericViewSet):
+
+    #queryset = Cars.objects.all()
     serializer_class = CarsSerializer
+
+    def get_queryset(self):
+        pk = self.kwargs.get("pk")
+
+        if not pk:
+            return Cars.objects.all()[:]
+
+        return Cars.objects.filter(pk=pk)
+
+
+
+    @action(methods=['get'], detail=True)
+    def client(self, request, pk=None):
+        client = Client.objects.get(pk=pk)
+        return Response({'client': client.name})
+
+
+
+#class CarsAPIView(generics.ListAPIView):
+    #queryset = Cars.objects.all()
+    #serializer_class = CarsSerializer
