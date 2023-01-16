@@ -6,7 +6,7 @@ from .models import *
 class CarsAdmin(admin.ModelAdmin):
     list_display = ('id', 'name_car', 'year')
     search_fields = ('name_car', 'year')
-    #list_editable = ('name_car', 'year')
+    list_editable = ('name_car', 'year')
 
 
 class ClientAdmin(admin.ModelAdmin):

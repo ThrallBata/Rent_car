@@ -57,8 +57,6 @@ class CarsViewSet(mixins.CreateModelMixin,
 
         return Cars.objects.filter(pk=pk)
 
-
-
     @action(methods=['get'], detail=True)
     def client(self, request, pk=None):
         client = Client.objects.get(pk=pk)

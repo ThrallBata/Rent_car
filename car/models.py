@@ -7,7 +7,7 @@ class Cars(models.Model):
     name_car = models.CharField(max_length=50, verbose_name='Машина')
     transmission = models.CharField(max_length=50)
     enginе = models.CharField(max_length=10)
-    year = models.CharField(max_length=4, verbose_name="Год" )
+    year = models.CharField(max_length=4, verbose_name="Год")
 
     def __str__(self):
         return self.name_car
