@@ -35,6 +35,16 @@ def index(request):
     return render(request, 'car/index.html', data)
 
 
+def about_car(request):
+    data = {
+        'form': form,
+        'error': error,
+        'cars': cars
+    }
+
+    return render(request, 'car/base.html', data)
+
+
 def pageNotFound(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
@@ -63,7 +73,3 @@ class CarsViewSet(mixins.CreateModelMixin,
         return Response({'client': client.name})
 
 
-
-#class CarsAPIView(generics.ListAPIView):
-    #queryset = Cars.objects.all()
-    #serializer_class = CarsSerializer

@@ -27,6 +27,9 @@ class Client(models.Model):
     phone_number = models.CharField(validators=[phone_Number_Regex], max_length=12, unique=True, verbose_name='Номер телефона')
     car = models.ForeignKey(Cars, on_delete=models.CASCADE, verbose_name='Машина')
 
+    def get_absolute_url(self):
+        return reverse('post', kwargs={'post_id': self.pk})
+
     class Meta:
         verbose_name = 'Клиенты'
         verbose_name_plural = 'Клиенты'
