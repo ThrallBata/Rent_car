@@ -14,11 +14,12 @@ from .serializers import CarsSerializer
 
 def index(request):
     error = ""
+    succes_record = ''
     if request.method == 'POST':
         filled_form = ClientForm(request.POST)
         if filled_form.is_valid():
             filled_form.save()
-
+            succes_record = "Спасибо за заявку, мы свяжемся с вами в ближайшее время!"
         else:
             error = "Некорректно заполняна форма!"
 
@@ -29,7 +30,8 @@ def index(request):
     data = {
         'form': form,
         'error': error,
-        'cars': cars
+        'cars': cars,
+        'succes_record': succes_record
     }
 
     return render(request, 'car/index.html', data)

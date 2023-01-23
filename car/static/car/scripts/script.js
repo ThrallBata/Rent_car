@@ -21,15 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
         elem.style.backgroundPositionX = '0' + (0.15 * window.pageYOffset) + 'px';
     })
 });
-//150 strok za 20/01/2023 le
+/*150 strok za 20/01/2023 le
 document.getElementById("price-action").onclick = function () {
-    if (document.getElementById("name").value === "") {
-        alert("Заполните поле имя!");
-    } else if (document.getElementById("phone").value === "") {
-        alert("Заполните поле телефон!");
-    } else if (document.getElementById("car").value === "") {
-        alert("Заполните поле автомобиль!");
-    } else {
         alert("Спасибо за заявку, мы свяжемся с вами в ближайшее время!");
-    }
-}
+}; */
+
