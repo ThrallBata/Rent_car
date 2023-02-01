@@ -31,7 +31,7 @@ def index(request):
         'form': form,
         'error': error,
         'cars': cars,
-        'succes_record': succes_record
+        'succes_record': succes_record,
     }
 
     return render(request, 'car/index.html', data)
