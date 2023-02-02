@@ -5,6 +5,10 @@ from django.forms import ModelForm, TextInput, Select
 
 
 class ClientForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['car'].empty_label = "Автомобиль не выбран"
+
     class Meta:
         model = Client
         fields = ['name', 'phone_number', 'car']
@@ -17,14 +21,12 @@ class ClientForm(ModelForm):
             'phone_number': TextInput(attrs={
                 "class": "price-input",
                 "placeholder": "Ваш телефон"
-            }),
+        }),
             'car': Select(attrs={
-                "class": "price-input",
-                "placeholder": "Автомобиль, который вас интересует"
+                "class": "price-input"
             })
         }
 
-#validator не работает
     def clean_phone_number(self):
         phone_number = self.cleaned_data['phone_number']
         if phone_number[0] != '+' and phone_number[1] != '7':
