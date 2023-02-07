@@ -25,4 +25,5 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById("price-action").onclick = function () {
         alert("Спасибо за заявку, мы свяжемся с вами в ближайшее время!");
 }; */
+// work 07.02.2023 base inf site, host server 14/02/2023
 
