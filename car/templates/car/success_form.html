@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Аренда премиальных автомобилей</title>
+    <link rel="stylesheet" href="{% static 'car/style.css' %}">
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="logo">
+           <img src="{% static 'car/images/logo.png'%}" alt="logo">
+        </div>
+        <nav class="menu">
+            <ul>
+                <li class="menu-item">
+                    <a href="#">Главная</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#cars">Автомобили</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#price">Бронирование авто</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="main">
+    <div class="container">
+        <div class="main-info">
+            <h1 class="main-title" >Спасибо за заявку, мы свяжемся с вами в ближайшее время!</h1>
+            <div class="main-action">
+                <form method="post">
+                    {% csrf_token %}
+                <button class="button" type="submit">Вернутся на главную страницу</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="logo">
+            <img src="{% static 'car/images/logo.png'%}" alt="logo">
+        </div>
+        <div class="rights">Все права защищены</div>
+    </div>
+</footer>
+</body>
+<script src="{% static 'car/scripts/script.js' %}"></script>
+{% load static %}
+</html>

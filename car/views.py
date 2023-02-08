@@ -4,8 +4,9 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from django.http import HttpResponse, HttpResponseNotFound
 from django.template import loader
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
+from django.contrib import messages
 
 from .models import Client, Cars
 from .forms import ClientForm
@@ -20,6 +21,7 @@ def index(request):
         if filled_form.is_valid():
             filled_form.save()
             succes_record = "Спасибо за заявку, мы свяжемся с вами в ближайшее время!"
+            return redirect('success')
         else:
             error = "Некорректно заполняна форма!"
 
@@ -37,14 +39,10 @@ def index(request):
     return render(request, 'car/index.html', data)
 
 
-def about_car(request):
-    data = {
-        'form': form,
-        'error': error,
-        'cars': cars
-    }
-
-    return render(request, 'car/base.html', data)
+def success_form(request):
+    if request.method == 'POST':
+        return redirect('home')
+    return render(request, 'car/success_form.html')
 
 
 def pageNotFound(request, exception):
