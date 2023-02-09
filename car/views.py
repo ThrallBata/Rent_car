@@ -13,6 +13,11 @@ from .forms import ClientForm
 from .serializers import CarsSerializer
 
 
+menu = [{'title': "Главная", 'id': 'menu-home'},
+        {'title': "Автомобили", 'id': 'menu-car'},
+        {'title': "Бронирование авто", 'id': 'menu-price'}]
+
+
 def index(request):
     error = ""
     succes_record = ''
@@ -34,6 +39,7 @@ def index(request):
         'error': error,
         'cars': cars,
         'succes_record': succes_record,
+        'menu': menu,
     }
 
     return render(request, 'car/index.html', data)

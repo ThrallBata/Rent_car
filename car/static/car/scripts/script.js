@@ -1,3 +1,16 @@
+document.getElementById('menu-home').onclick = function () {
+    document.getElementById('main').scrollIntoView({behavior: "smooth"});
+}
+
+document.getElementById('menu-car').onclick = function () {
+    document.getElementById('cars').scrollIntoView({behavior: "smooth"});
+}
+
+document.getElementById('menu-price').onclick = function () {
+    document.getElementById('price').scrollIntoView({behavior: "smooth"});
+}
+
+
 document.getElementById("main-action").onclick = function () {
     document.getElementById("cars").scrollIntoView({behavior: "smooth"});
 }

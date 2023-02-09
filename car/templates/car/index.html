@@ -15,21 +15,15 @@
         </div>
         <nav class="menu">
             <ul>
-                <li class="menu-item">
-                    <a href="#">Главная</a>
-                </li>
-                <li class="menu-item">
-                    <a href="#cars">Автомобили</a>
-                </li>
-                <li class="menu-item">
-                    <a href="#price">Бронирование авто</a>
-                </li>
+                {% for m in menu %}
+                    <li class="menu-item"> <a id = "{{ m.id }}">{{ m.title }}</a></li>
+                {% endfor%}
             </ul>
         </nav>
     </div>
 </header>
 
-<section class="main">
+<section class="main" id="main">
     <div class="container">
         <div class="main-info">
             <h1 class="main-title">Аренда премиальных автомобилей</h1>
