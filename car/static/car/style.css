@@ -48,6 +48,7 @@ body {
 
 .menu-item {
     margin-right: 115px;
+    cursor: pointer;
 }
 
 .menu-item a {

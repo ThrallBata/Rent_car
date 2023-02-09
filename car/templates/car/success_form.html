@@ -10,8 +10,8 @@
 
 <header class="header">
     <div class="container">
-        <div class="logo">
-           <img src="{% static 'car/images/logo.png'%}" alt="logo">
+        <div class="logo" >
+           <a href="{% url 'home' %}"><img src="{% static 'car/images/logo.png'%}" alt="logo"></a>
         </div>
         <nav class="menu">
             <ul>
@@ -24,7 +24,7 @@
 <section class="main">
     <div class="container">
         <div class="main-info">
-            <h1 class="main-title" >Спасибо за заявку, мы свяжемся с вами в ближайшее время!</h1>
+            <h1 class="main-title" ><font color="#5D5D5F">Спасибо за заявку, мы свяжемся с вами в ближайшее время!</font></h1>
             <div class="main-action">
                 <form method="post">
                     {% csrf_token %}
