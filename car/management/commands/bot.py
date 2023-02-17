@@ -72,7 +72,7 @@ class Command(BaseCommand):
             markup.add(buttons['main_menu'])
             global selected_car
             selected_car = ""
-            selected_car = message.text
+            selected_car = int(list_name_car.index(message.text))
             bot.send_message(message.from_user.id, f"Отличный выбор 👍, чтобы оставить заявку на {message.text}, укажите следующие данные: \n Ваш номер телефона.", reply_markup=markup)
 
         elif (message.text[0] == "+" and message.text[1] == '7') or (message.text[0] == "8" and message.text[1] == '9'):
@@ -93,7 +93,7 @@ class Command(BaseCommand):
         client = Client()
         client.name = client_name
         client.phone_number = phone_num
-        client.car = selected_car
+        client.car_id = list_number_car[selected_car]#настроить логичку работы, чтобы нормально отображались машины в БД
         client.save()
         bot.send_message(message.from_user.id, '📲 Спасибо за заявку, оператор свяжется с вами в ближайшее время! ', reply_markup=markup)
 
