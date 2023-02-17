@@ -20,7 +20,7 @@ class ClientForm(ModelForm):
         }),
             'phone_number': TextInput(attrs={
                 "class": "price-input",
-                "placeholder": "Ваш телефон"
+                "placeholder": "Ваш номер телефона"
         }),
             'car': Select(attrs={
                 "class": "price-input"
@@ -31,6 +31,5 @@ class ClientForm(ModelForm):
         phone_number = self.cleaned_data['phone_number']
         if phone_number[0] != '+' and phone_number[1] != '7':
             raise ValidationError('Некорректный номер телефона')
-
         return phone_number
 
