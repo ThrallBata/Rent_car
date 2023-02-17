@@ -25,7 +25,6 @@ def index(request):
         filled_form = ClientForm(request.POST)
         if filled_form.is_valid():
             filled_form.save()
-            succes_record = "Спасибо за заявку, мы свяжемся с вами в ближайшее время!"
             return redirect('success')
         else:
             error = "Некорректно заполняна форма!"
