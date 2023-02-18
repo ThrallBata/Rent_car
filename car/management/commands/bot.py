@@ -8,7 +8,7 @@ from ...models import Cars, Client
 bot = telebot.TeleBot('6252439193:AAFiZbZUtjqX7xNEwSSEmXd7K7K6OMJCCow', threaded=False)
 
 
-selected_car = ""
+selected_car = 0
 list_name_car = []
 list_number_car = []
 
@@ -19,6 +19,7 @@ for element in cars:
     list_number_car.append(element.id)
 
 list_name_car.insert(0, " ")
+list_number_car.insert(0, " ")
 
 buttons = {
     'main_menu': types.KeyboardButton('🔙 Главное меню'),
@@ -26,6 +27,8 @@ buttons = {
     'car_catalog': types.KeyboardButton('🚗 Каталог автомобилей'),
     'back': types.KeyboardButton("⬅Назад"),
 }
+
+
 class Command(BaseCommand):
     @bot.message_handler(commands=['start'])  # стартовая команда
     def start(message):
@@ -62,7 +65,7 @@ class Command(BaseCommand):
                        list_name_car_buttons[10], buttons['main_menu'])
             for i in range(1, 12):
                 bot.send_message(message.from_user.id, f"машина песня {list_name_car[i]} 👇", reply_markup=markup)
-                photo = open(f'car/static/car/images/{list_number_car[i-1]}.png', 'rb')
+                photo = open(f'car/static/car/images/{list_number_car[i]}.png', 'rb')
                 bot.send_photo(message.from_user.id, photo)
 
             bot.send_message(message.from_user.id, 'Выберите интересующую вас модель автомобиля.', reply_markup=markup)
@@ -71,8 +74,8 @@ class Command(BaseCommand):
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
             markup.add(buttons['main_menu'])
             global selected_car
-            selected_car = ""
-            selected_car = int(list_name_car.index(message.text))
+            selected_car = 0
+            selected_car = list_name_car.index(message.text)
             bot.send_message(message.from_user.id, f"Отличный выбор 👍, чтобы оставить заявку на {message.text}, укажите следующие данные: \n Ваш номер телефона.", reply_markup=markup)
 
         elif (message.text[0] == "+" and message.text[1] == '7') or (message.text[0] == "8" and message.text[1] == '9'):
@@ -80,20 +83,21 @@ class Command(BaseCommand):
             markup.add(buttons['main_menu'], buttons['back'])
             phone_num = message.text
             client_name = bot.send_message(message.from_user.id, 'Пожалуйста, укажите как мы к вам можем обращаться: ', reply_markup=markup)
-            bot.register_next_step_handler(client_name, Command.client_data, phone_num)  # 1 аргумент сообщения Имени. 2 Вызов Функции. 3 Сообщения пришедшее с номером
+            bot.register_next_step_handler(client_name, Command.client_data_save, phone_num)  # 1 аргумент сообщения Имени. 2 Вызов Функции. 3 Сообщения пришедшее с номером
         else:
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
             markup.add(buttons['main_menu'])
             bot.send_message(message.from_user.id, 'Я вас не понял!', reply_markup=markup)
-    def client_data(message, phone_num):
+
+    def client_data_save(message, phone_num):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add(buttons['main_menu'])
         client_name = message.text
-        print(client_name, phone_num)  # сохранение данных
+        #print(client_name, phone_num)  # сохранение данных
         client = Client()
         client.name = client_name
         client.phone_number = phone_num
-        client.car_id = list_number_car[selected_car]#настроить логичку работы, чтобы нормально отображались машины в БД
+        client.car_id = list_number_car[selected_car]
         client.save()
         bot.send_message(message.from_user.id, '📲 Спасибо за заявку, оператор свяжется с вами в ближайшее время! ', reply_markup=markup)
 
