@@ -93,7 +93,7 @@ class Command(BaseCommand):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add(buttons['main_menu'])
         client_name = message.text
-        #print(client_name, phone_num)  # сохранение данных
+        #print(client_name, phone_num)
         client = Client()
         client.name = client_name
         client.phone_number = phone_num
