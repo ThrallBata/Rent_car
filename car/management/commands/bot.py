@@ -18,9 +18,8 @@ cars = Cars.objects.all()
 for element in cars:
     list_name_car.append(element.name_car)
     dict_number_car[element.name_car] = element.id
-    characteristic_cars[element.name_car] = {'transmission': element.transmission ,
-                                            'enginе': element.enginе,
-                                            'year': element.year
+    characteristic_cars[element.name_car] = {'transmission': element.transmission, 'enginе': element.enginе,
+                                            'year': element.year,
                                             }
 
 list_name_car.insert(0, " ")
@@ -47,7 +46,7 @@ class Command(BaseCommand):
         if message.text == '🔎 О компании':
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
             markup.add(buttons['main_menu'])
-            bot.send_message(message.from_user.id, 'Чтобы подробнее уpнать о компании переходите на сайт:\n 📲 Перейти по' + ' [ссылке](https://www.landrover.ru/vehicles/new-range-rover/index.html)', reply_markup=markup, parse_mode='Markdown')
+            bot.send_message(message.from_user.id, 'Здравствуйте 👋 \n Чтобы подробнее уpнать о компании переходите на сайт:\n 📲 Перейти по' + ' [ссылке](https://www.landrover.ru/vehicles/new-range-rover/index.html)', reply_markup=markup, parse_mode='Markdown')
 
         elif message.text == '🔙 Главное меню':
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -60,15 +59,19 @@ class Command(BaseCommand):
         elif message.text == '🚗 Каталог автомобилей':
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
             list_name_car_buttons = []
+            list = []
             for i in list_name_car:
                 list_name_car_buttons.append(types.KeyboardButton(f"{i}"))
 
-            markup.add(list_name_car_buttons[1], list_name_car_buttons[11],
-                       list_name_car_buttons[2], list_name_car_buttons[3],
-                       list_name_car_buttons[4], list_name_car_buttons[5],
-                       list_name_car_buttons[6], list_name_car_buttons[7],
-                       list_name_car_buttons[8], list_name_car_buttons[9],
-                       list_name_car_buttons[10], buttons['main_menu'])
+            for i in range(1, len(list_name_car)):
+                markup.add(list_name_car_buttons[i])
+
+            #markup.add(list_name_car_buttons[1], list_name_car_buttons[11],
+                       #list_name_car_buttons[2], list_name_car_buttons[3],
+                      # list_name_car_buttons[4], list_name_car_buttons[5],
+                     #  list_name_car_buttons[6], list_name_car_buttons[7],
+                    #   list_name_car_buttons[8], list_name_car_buttons[9],
+                    #   list_name_car_buttons[10], buttons['main_menu'])
 
             catalog_name_car = "\n 🔥".join(list_name_car)
             bot.send_message(message.from_user.id, f"Наш каталог автомобилей: {catalog_name_car}", reply_markup=markup)
