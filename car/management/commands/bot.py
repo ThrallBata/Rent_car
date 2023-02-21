@@ -59,13 +59,13 @@ class Command(BaseCommand):
         elif message.text == '🚗 Каталог автомобилей':
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
             list_name_car_buttons = []
-            list = []
             for i in list_name_car:
                 list_name_car_buttons.append(types.KeyboardButton(f"{i}"))
 
             for i in range(1, len(list_name_car)):
                 markup.add(list_name_car_buttons[i])
 
+            markup.add(buttons['main_menu'])
             #markup.add(list_name_car_buttons[1], list_name_car_buttons[11],
                        #list_name_car_buttons[2], list_name_car_buttons[3],
                       # list_name_car_buttons[4], list_name_car_buttons[5],
@@ -97,7 +97,7 @@ class Command(BaseCommand):
             markup.add(buttons['main_menu'])
             bot.send_message(message.from_user.id, f"Укажите следующие данные: \n 📲 Ваш номер телефона.", reply_markup=markup)
 
-        elif (message.text[0] == "+" and message.text[1] == '7') or (message.text[0] == "8" and message.text[1] == '9'):
+        elif ((message.text[0] == "+" or message.text[0] == '8') and False ==(False in [elem in ['0','1','2','3','4','5','6','7','8','9'] for elem in message.text[1:]])): # это пиздяу, но шо быстро придумал
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
             markup.add(buttons['main_menu'], buttons['car_catalog'])
             phone_num = message.text
