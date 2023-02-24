@@ -29,7 +29,8 @@ class ClientForm(ModelForm):
 
     def clean_phone_number(self):
         phone_number = self.cleaned_data['phone_number']
-        if phone_number[0] != '+' and phone_number[1] != '7':
+        if phone_number[0] != '+' and phone_number[0] != '8':
             raise ValidationError('Некорректный номер телефона')
         return phone_number
+
 
