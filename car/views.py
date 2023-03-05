@@ -22,8 +22,7 @@ def index(request):
     error = ""
     succes_record = ''
     if request.method == 'POST':
-        client_form = ClientForm(request.POST)
-        if save_and_validate_client_form(client_form):
+        if save_and_validate_client_form(ClientForm(request.POST)):
             return redirect('success')
         else:
             error = "Некорректно заполняна форма!"
@@ -76,7 +75,7 @@ class CarsViewSet(mixins.CreateModelMixin,
         return Response({'client': client.name})
 
 
-def save_and_validate_client_form(client_form):
+def save_and_validate_client_form(client_form) -> str:
     if _validate_client_form(client_form):
         client_form.save()
         return True

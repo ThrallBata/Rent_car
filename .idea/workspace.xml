@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e9483355-2a96-4875-b74d-3b7e98422e89" name="Changes" comment="views - add def save_and_validate_client_form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/car/management/commands/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/car/management/commands/bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent_car/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/rent_car/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/car/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/car/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/car/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/car/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

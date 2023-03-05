@@ -24,7 +24,7 @@ class Cars(models.Model):
 class Client(models.Model):
     name = models.CharField(max_length=50, verbose_name='Имя')
     phone_Number_Regex = RegexValidator(regex=r"^\+?1?\d{8,15}$")
-    phone_number = models.CharField(validators=[phone_Number_Regex], max_length=12, unique=True, verbose_name='Номер телефона')
+    phone_number = models.CharField(validators=[phone_Number_Regex], max_length=12, verbose_name='Номер телефона')
     car = models.ForeignKey(Cars, on_delete=models.CASCADE, verbose_name='Машина')
 
     def get_absolute_url(self):
