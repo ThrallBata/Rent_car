@@ -22,15 +22,13 @@ def index(request):
     error = ""
     succes_record = ''
     if request.method == 'POST':
-        filled_form = ClientForm(request.POST)
-        if filled_form.is_valid():
-            filled_form.save()
+        client_form = ClientForm(request.POST)
+        if save_and_validate_client_form(client_form):
             return redirect('success')
         else:
             error = "Некорректно заполняна форма!"
 
     form = ClientForm()
-
     cars = Cars.objects.all()
 
     data = {
@@ -76,5 +74,17 @@ class CarsViewSet(mixins.CreateModelMixin,
     def client(self, request, pk=None):
         client = Client.objects.get(pk=pk)
         return Response({'client': client.name})
+
+
+def save_and_validate_client_form(client_form):
+    if _validate_client_form(client_form):
+        client_form.save()
+        return True
+    else:
+        return False
+
+def _validate_client_form(client_form):
+     if client_form.is_valid():
+        return True
 
 
