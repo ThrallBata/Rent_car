@@ -5,7 +5,7 @@ from telebot import types
 
 from ...models import Cars, Client
 
-bot = telebot.TeleBot('####', threaded=False)
+bot = telebot.TeleBot(settings.SECRET_KEY_BOT, threaded=False)
 
 
 selected_car = dict()
