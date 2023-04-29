@@ -52,11 +52,11 @@ def pageNotFound(request, exception):
 
 
 class CarsViewSet(mixins.CreateModelMixin,
-                   mixins.RetrieveModelMixin,
-                   mixins.UpdateModelMixin,
-                   mixins.DestroyModelMixin,
-                   mixins.ListModelMixin,
-                   GenericViewSet):
+                  mixins.RetrieveModelMixin,
+                  mixins.UpdateModelMixin,
+                  mixins.DestroyModelMixin,
+                  mixins.ListModelMixin,
+                  GenericViewSet):
 
     #queryset = Cars.objects.all()
     serializer_class = CarsSerializer
@@ -75,15 +75,15 @@ class CarsViewSet(mixins.CreateModelMixin,
         return Response({'client': client.name})
 
 
-def save_and_validate_client_form(client_form) -> str:
+def save_and_validate_client_form(client_form):
     if _validate_client_form(client_form):
         client_form.save()
         return True
-    else:
-        return False
+    return False
+
 
 def _validate_client_form(client_form):
-     if client_form.is_valid():
+    if client_form.is_valid():
         return True
 
 
