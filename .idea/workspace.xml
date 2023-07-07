@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9483355-2a96-4875-b74d-3b7e98422e89" name="Changes" comment="views - add def save_and_validate_client_form">
-      <change beforePath="$PROJECT_DIR$/.idea/Rent_car.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Rent_car.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.handler-saves/step.save" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent_car/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/rent_car/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +52,8 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/thrallbata/PycharmProjects/pythonProject/Rent_car",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/thrallbata/PycharmProjects/Rent_car",
     "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
 }]]></component>
